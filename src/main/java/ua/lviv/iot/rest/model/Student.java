@@ -13,7 +13,7 @@ public class Student {
     private String firstName;
     private String lastName;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "group_id")
     @JsonIgnoreProperties ("students")
     private Group group;

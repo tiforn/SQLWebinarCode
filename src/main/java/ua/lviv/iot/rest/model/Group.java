@@ -11,13 +11,13 @@ import java.util.Set;
 public class Group {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer id;
 
 
     private String name;
 
-    @OneToMany (mappedBy = "group", fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "group", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("group")
     private Set<Student> students;
 
