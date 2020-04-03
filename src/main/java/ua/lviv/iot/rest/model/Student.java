@@ -1,18 +1,22 @@
 package ua.lviv.iot.rest.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Student {
     private String firstName;
     private String lastName;
+
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "group_id")
+    @JsonIgnoreProperties ("students")
+    private Group group;
 
     private final Class<GeneratorType> generatorTypeClass = GeneratorType.class;
     @Id
@@ -55,5 +59,13 @@ public class Student {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

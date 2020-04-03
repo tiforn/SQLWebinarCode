@@ -36,10 +36,8 @@ public class StudentController {
 
    @PostMapping (produces = {MediaType.APPLICATION_JSON_VALUE, "application/xml;charset=UTF-8"})
     public Student setNewMoldovanStudent(@RequestBody Student student){
-        System.out.println(studentService.createStudent(student));
-        student.setId(idCounter.incrementAndGet());
-        studentMap.put(student.getId(), student);
-        return student;
+        return studentService.createStudent(student);
+
     }
 
    @DeleteMapping (path = "/{id}")
