@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ua.lviv.iot.rest.business.StudentService;
 import ua.lviv.iot.rest.model.Student;
 
+import javax.websocket.server.PathParam;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,14 +25,20 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+//    @GetMapping
+//    public List<Student> getAllStd(){
+//        return studentService.getAllStudents();
+//    }
+
     @GetMapping
-    public List<Student> getAllStd(){
-        return new LinkedList<>(studentMap.values());
+    public List<Student> getAllStd(@RequestParam (value = "firstName", required = false) String firstName){
+        if (firstName == null) return studentService.getAllStudents();
+        else return studentService.getAllStudentsByNAme(firstName);
     }
    @GetMapping (path = "/{id}")
    public Student getStudent(@PathVariable ("id") Integer studentID){
        System.out.println(studentID);
-       return studentMap.get(studentID);
+       return studentService.getStudent(studentID);
    }
 
    @PostMapping (produces = {MediaType.APPLICATION_JSON_VALUE, "application/xml;charset=UTF-8"})

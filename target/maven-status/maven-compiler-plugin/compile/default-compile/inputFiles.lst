@@ -1,6 +1,9 @@
 /home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/model/Student.java
+/home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/business/GroupService.java
 /home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/dataaccess/StudentRepository.java
+/home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/dataaccess/GroupRepository.java
 /home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/controller/StudentController.java
 /home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/RestApplication.java
 /home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/model/Group.java
 /home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/business/StudentService.java
+/home/maxley/java-iot-projects/SQLWebinarCode/SQLWebinarCode/src/main/java/ua/lviv/iot/rest/controller/GroupController.java

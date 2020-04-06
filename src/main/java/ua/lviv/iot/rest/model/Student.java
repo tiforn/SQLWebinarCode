@@ -7,8 +7,11 @@ import org.hibernate.annotations.ManyToAny;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
+
+@NamedNativeQuery(name="Student.findBestStudent", query = "select * from students where id = 1")
 public class Student {
     private String firstName;
     private String lastName;
@@ -19,9 +22,27 @@ public class Student {
     private Group group;
 
     private final Class<GeneratorType> generatorTypeClass = GeneratorType.class;
+
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer id;
+
+    public Class<GeneratorType> getGeneratorTypeClass() {
+        return generatorTypeClass;
+    }
+
+    public Set<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
+    @ManyToMany(mappedBy = "students")
+    private Set<Subject> subjects;
+
+
 
     public Student(String firstName, String lastName) {
        this(firstName, lastName, 33);

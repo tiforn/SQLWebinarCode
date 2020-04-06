@@ -1,6 +1,9 @@
 ua/lviv/iot/rest/RestApplication.class
+ua/lviv/iot/rest/business/GroupService.class
 ua/lviv/iot/rest/controller/StudentController.class
 ua/lviv/iot/rest/business/StudentService.class
+ua/lviv/iot/rest/dataaccess/GroupRepository.class
 ua/lviv/iot/rest/dataaccess/StudentRepository.class
 ua/lviv/iot/rest/model/Student.class
 ua/lviv/iot/rest/model/Group.class
+ua/lviv/iot/rest/controller/GroupController.class

@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import ua.lviv.iot.rest.dataaccess.StudentRepository;
 import ua.lviv.iot.rest.model.Student;
 
+import java.io.Serializable;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class StudentService  {
 
@@ -13,5 +17,31 @@ public class StudentService  {
 
     public Student createStudent(Student student){
         return studentRepository.save(student);
+    }
+
+    public List<Student> getAllStudents(){
+        return studentRepository.findAll();
+    }
+
+    public Student updateStudent(Integer id){
+        String query = "select * from students where id :id";
+        String finalQuery = query + id;
+        return null;
+    }
+    public Student getStudent(Integer id){
+        return (Student) studentRepository.getOne(id);
+    }
+    public List<Student> getAllStudentsByNAme(String name){
+        return studentRepository.findAllByFirstName(name);
+    }
+    public Student deleteStudent(Integer id){
+        if (studentRepository.findById(id).isPresent()) {
+               Student std =  studentRepository.getOne(id);
+
+            studentRepository.deleteById(id);
+            return std;
+        }
+        else return null;
+
     }
 }
