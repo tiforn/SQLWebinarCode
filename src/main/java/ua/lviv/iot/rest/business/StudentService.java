@@ -1,47 +1,47 @@
 package ua.lviv.iot.rest.business;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.lviv.iot.rest.dataaccess.StudentRepository;
 import ua.lviv.iot.rest.model.Student;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Optional;
-
 @Service
-public class StudentService  {
+public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
 
-    public Student createStudent(Student student){
+    public Student createStudent(Student student) {
         return studentRepository.save(student);
     }
 
-    public List<Student> getAllStudents(){
+    public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    public Student updateStudent(Integer id){
+    public Student updateStudent(Integer id) {
         String query = "select * from students where id :id";
         String finalQuery = query + id;
         return null;
     }
-    public Student getStudent(Integer id){
+
+    public Student getStudent(Integer id) {
         return (Student) studentRepository.getOne(id);
     }
-    public List<Student> getAllStudentsByNAme(String name){
+
+    public List<Student> getAllStudentsByNAme(String name) {
         return studentRepository.findAllByFirstName(name);
     }
-    public Student deleteStudent(Integer id){
+
+    public Student deleteStudent(Integer id) {
         if (studentRepository.findById(id).isPresent()) {
-               Student std =  studentRepository.getOne(id);
+            Student std = studentRepository.getOne(id);
 
             studentRepository.deleteById(id);
             return std;
         }
-        else return null;
+        return null;
 
     }
 }

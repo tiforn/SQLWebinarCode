@@ -1,6 +1,5 @@
 package ua.lviv.iot.rest.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.ManyToAny;
@@ -11,20 +10,20 @@ import java.util.Set;
 
 @Entity
 
-@NamedNativeQuery(name="Student.findBestStudent", query = "select * from students where id = 1")
+@NamedNativeQuery(name = "Student.findBestStudent", query = "select * from students where id = 1")
 public class Student {
     private String firstName;
     private String lastName;
 
-    @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "group_id")
-    @JsonIgnoreProperties ("students")
+    @JsonIgnoreProperties("students")
     private Group group;
 
-    private final Class<GeneratorType> generatorTypeClass = GeneratorType.class;
+    private Class<GeneratorType> generatorTypeClass = GeneratorType.class;
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer id;
 
     public Class<GeneratorType> getGeneratorTypeClass() {
@@ -42,10 +41,8 @@ public class Student {
     @ManyToMany(mappedBy = "students")
     private Set<Subject> subjects;
 
-
-
     public Student(String firstName, String lastName) {
-       this(firstName, lastName, 33);
+        this(firstName, lastName, 33);
     }
 
     public Student(String firstName, String lastName, Integer id) {
